@@ -1,6 +1,6 @@
 # client
 
-> vue + express + sequelize stack project
+> vue + express + sequelize using https://www.youtube.com/watch?v=Fa4cRMATDUI tutorial
 
 ## Build Setup
 
