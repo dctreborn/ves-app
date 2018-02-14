@@ -6,5 +6,7 @@ module.exports  = (app) => {
     app.post('/register',        
         // policy must be first for validation
         AuthenticationControllerPolicy.register,
-        AuthenticationController.register)
+        AuthenticationController.register),
+    app.post('/login',
+        AuthenticationController.login)
 }
