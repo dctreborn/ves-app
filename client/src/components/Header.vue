@@ -13,9 +13,11 @@
         <v-spacer/>
 
         <v-toolbar-items>
-            <v-btn flat dark>
-                Sign Up
-            </v-btn>
+            <router-link to="register">
+                <v-btn flat dark>                    
+                    Sign Up                
+                </v-btn>
+            </router-link>
         </v-toolbar-items>
     </v-toolbar>
 </template>
