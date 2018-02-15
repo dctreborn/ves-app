@@ -7,9 +7,11 @@
         </v-toolbar-title>
 
         <v-toolbar-items>
-            <v-btn flat dark>
-                Browser
-            </v-btn>
+            <router-link to="/songs">
+                <v-btn flat dark>
+                    Browse
+                </v-btn>
+            </router-link>
         </v-toolbar-items>
 
         <v-spacer/>
