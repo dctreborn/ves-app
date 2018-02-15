@@ -1,7 +1,7 @@
 import api from './api'
 
 export default {
-    index(credentials) {
+    index() {
         return api().get('songs')
     }
 }
