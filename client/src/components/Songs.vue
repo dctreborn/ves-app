@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import SongsService from '@/services/SongsService'
+import SongsService from '@/services/songsService'
 import Panel from '@/components/Panel'
 export default {
   components: {
