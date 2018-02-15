@@ -26,13 +26,24 @@
                     Sign Up                
                 </v-btn>
             </router-link>
+
+             <router-link to="/">
+                <v-btn v-if="$store.state.isUserLoggedIn" @click="logout" flat dark>                    
+                    Log Out                
+                </v-btn>
+            </router-link>
         </v-toolbar-items>
     </v-toolbar>
 </template>
 
 <script>
 export default {
-  
+  methods: {
+      logout() {
+          this.$store.dispatch('setToken', null)
+          this.$store.dispatch('setUser', null)
+      }
+  }
 }
 </script>
 
