@@ -4,32 +4,32 @@
         <panel title="Song Metadata">                
             <v-text-field
                 label="Title"
-                v-model="title"
+                v-model="song.title"
             ></v-text-field>
 
             <v-text-field
                 label="Artist"
-                v-model="artist"
+                v-model="song.artist"
             ></v-text-field>
 
             <v-text-field
                 label="Genre"
-                v-model="genre"
+                v-model="song.genre"
             ></v-text-field>
 
             <v-text-field
                 label="Album"
-                v-model="album"
+                v-model="song.album"
             ></v-text-field>
 
             <v-text-field
                 label="Image URL"
-                v-model="albumImageUrl"
+                v-model="song.albumImageUrl"
             ></v-text-field>
 
             <v-text-field
                 label="Youtube ID"
-                v-model="youtubeId"
+                v-model="song.youtubeId"
             ></v-text-field>
                  
         </panel>
@@ -40,23 +40,25 @@
                 <v-text-field
                     label="Lyrics"
                     multi-line
-                    v-model="lyrics"
+                    v-model="song.lyrics"
                 ></v-text-field>
 
                 <v-text-field
                     label="Tab"
                     multi-line
-                    v-model="tab"
+                    v-model="song.tab"
                 ></v-text-field>  
             </panel>
 
-            <v-btn class="cyan" @click="create">Create Song</v-btn>
+            <router-link to="/songs">
+                <v-btn class="cyan" @click="create">Create Song</v-btn>
+            </router-link>
         </v-flex>    
   </v-layout>
 </template>
 
 <script>
-import SongsService from '@/services/SongsService'
+import songsService from '@/services/songsService'
 import Panel from '@/components/Panel'
 export default {
   data(){
@@ -74,9 +76,13 @@ export default {
       }
   },
   methods: {
-      create(){
-        //   call api
-        SongsService.post(this.song)
+      async create(){
+        try {
+            await songsService.post(this.song)
+        } catch (err) {
+            console.log(err)
+        }
+        
       }
   },
   components: {
