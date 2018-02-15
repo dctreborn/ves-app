@@ -18,6 +18,7 @@
           <v-text-field
               name="password"
               label="Password"
+              type="password"
               box
               placeholder="password"
               v-model="password"

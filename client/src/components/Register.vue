@@ -7,21 +7,25 @@
         </v-toolbar>
 
         <div class="pl-4 pr-4 pt-2 pb-2" >
-          <v-text-field
-              name="email"
-              box
-              label="Email"
-              placeholder="email"
-              v-model="email"
-            ></v-text-field>
-          <br>
-          <v-text-field
-              name="password"
-              label="Password"
-              box
-              placeholder="password"
-              v-model="password"
-            ></v-text-field>
+          <form name="tab-tracker-form" autocomplete="off">
+            <v-text-field
+                name="email"
+                box
+                label="Email"
+                placeholder="email"
+                v-model="email"
+              ></v-text-field>
+            <br>
+            <v-text-field
+                name="password"
+                label="Password"
+                type="password"
+                aria-autocomplete="new-password"
+                box
+                placeholder="password"
+                v-model="password"
+              ></v-text-field>
+            </form>
           <br>
           <div class="error" v-html="error"/>
           <v-btn class="cyan" @click="register">Register</v-btn>
