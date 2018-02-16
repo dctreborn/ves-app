@@ -4,9 +4,13 @@
             <v-flex xs6>
                 <song-metadata :song="song"/>
             </v-flex>
-            
 
             <v-flex xs6 class="ml-2">
+                <you-tube :youtubeId="song.youtubeId"/>
+            </v-flex>
+            
+
+            <!-- <v-flex xs6 class="ml-2">
                 <panel title="Tabs">
                     <textarea
                         readonly
@@ -28,13 +32,14 @@
                 <panel title="Lyrics">
                     {{song.lyrics}}
                 </panel>
-            </v-flex>
+            </v-flex> -->
         </v-layout>
     </div>
 </template>
 
 <script>
 import SongMetadata from '../ViewSong/SongMetaData'
+import YouTube from '../ViewSong/YouTube'
 import songsService from '@/services/songsService'
 import Panel from '@/components/Panel'
 export default {
@@ -49,7 +54,8 @@ export default {
     },
     components: {
         Panel,
-        SongMetadata
+        SongMetadata,
+        YouTube
     }
 }
 </script>
