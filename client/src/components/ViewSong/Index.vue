@@ -19,31 +19,6 @@
                 <lyrics :song="song"/>
             </v-flex>
         </v-layout>
-            
-
-            <!-- <v-flex xs6 class="ml-2">
-                <panel title="Tabs">
-                    <textarea
-                        readonly
-                        label="Tab"
-                        v-model="song.tab"
-                    ></textarea>  
-                </panel>
-            </v-flex>
-        </v-layout>    
-
-        <v-layout>
-            <v-flex xs6>
-                <panel title="Youtube">
-                    {{song.youtubeId}}
-                </panel>
-            </v-flex>
-
-            <v-flex xs6>
-                <panel title="Lyrics">
-                    {{song.lyrics}}
-                </panel>
-            </v-flex> -->
     </div>
 </template>
 
