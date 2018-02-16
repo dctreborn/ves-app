@@ -8,6 +8,17 @@
             <v-flex xs6 class="ml-2">
                 <you-tube :youtubeId="song.youtubeId"/>
             </v-flex>
+        </v-layout>
+
+        <v-layout>
+            <v-flex xs6>
+                
+            </v-flex>
+
+            <v-flex xs6 class="ml-2 mt-2">
+                <lyrics :song="song"/>
+            </v-flex>
+        </v-layout>
             
 
             <!-- <v-flex xs6 class="ml-2">
@@ -33,13 +44,14 @@
                     {{song.lyrics}}
                 </panel>
             </v-flex> -->
-        </v-layout>
     </div>
 </template>
 
 <script>
 import SongMetadata from '../ViewSong/SongMetaData'
 import YouTube from '../ViewSong/YouTube'
+import Lyrics from '../ViewSong/Lyrics'
+import Tab from '../ViewSong/Tab'
 import songsService from '@/services/songsService'
 import Panel from '@/components/Panel'
 export default {
@@ -55,7 +67,8 @@ export default {
     components: {
         Panel,
         SongMetadata,
-        YouTube
+        YouTube,
+        Lyrics
     }
 }
 </script>
