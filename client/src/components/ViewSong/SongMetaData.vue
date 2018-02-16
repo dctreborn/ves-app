@@ -11,6 +11,14 @@
                 <div class="song-genre">
                     {{song.genre}}
                 </div>
+
+                <v-btn
+                    dark
+                    class="cyan"
+                    @click="navigateTo({name: 'song-edit', params: {songId: song.id}})"
+                >
+                    Edit
+                </v-btn>
             </v-flex>
             
             <v-flex xs6>
@@ -22,6 +30,7 @@
 </template>
 
 <script>
+import SongsService from '@/services/songsService'
 import Panel from '@/components/Panel'
 export default {
     props: [
@@ -29,6 +38,15 @@ export default {
     ],
     components: {
         Panel
+    },
+    methods: {
+        navigateTo(route){
+            this.$router.push(route)
+        }
+    },
+    async mounted(){
+        //   request backend data
+        this.songs = (await SongsService.edit()).data
     }
 }
 </script>
