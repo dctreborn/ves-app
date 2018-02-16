@@ -11,8 +11,8 @@
         </v-layout>
 
         <v-layout>
-            <v-flex xs6>
-                
+            <v-flex xs6 class="mt-2">
+                <tab :song="song"/>
             </v-flex>
 
             <v-flex xs6 class="ml-2 mt-2">
@@ -68,7 +68,8 @@ export default {
         Panel,
         SongMetadata,
         YouTube,
-        Lyrics
+        Lyrics,
+        Tab
     }
 }
 </script>
