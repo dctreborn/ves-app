@@ -85,7 +85,7 @@ export default {
     font-size: 24;
 }
 
-.song-tigenretle {
+.song-genre {
     font-size: 18;
 }
 
