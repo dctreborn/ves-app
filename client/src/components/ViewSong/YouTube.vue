@@ -1,9 +1,10 @@
 <template>
-  <panel title="Youtube Video">
+  <panel title="YouTube Video">
       <youtube
         :video-id="youtubeId"
-        :player-width="500"
-        :player-height="200"
+        :player-width="'100%'"
+        :player-height="330"
+        class="video"
       >
 
       </youtube>
@@ -12,12 +13,14 @@
 
 <script>
 import Panel from '@/components/Panel'
+import VueYouTubeEmbed from 'vue-youtube-embed'
 export default {
   props: [
       'youtubeId'
   ],
     components: {
-        Panel
+        Panel,
+        VueYouTubeEmbed
     }
 }
 </script>
