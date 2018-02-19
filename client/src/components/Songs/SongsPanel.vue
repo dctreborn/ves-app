@@ -44,11 +44,7 @@
 
 <script>
 import SongsService from '@/services/songsService'
-import Panel from '@/components/Panel'
 export default {
-  components: {
-      Panel
-  },
   data (){
       return {
           songs: []

@@ -76,7 +76,6 @@
 
 <script>
 import songsService from '@/services/songsService'
-import Panel from '@/components/Panel'
 export default {
   data(){
       return {        
@@ -128,9 +127,6 @@ export default {
           console.log(err)
       }
       
-  },
-  components: {
-      Panel
   }
 }
 </script>
