@@ -25,6 +25,24 @@
                     }">
                     Edit
                 </v-btn>
+
+                <v-btn
+                    v-if="isUserLoggedIn && !isBookmarked"
+                    dark
+                    class="cyan"
+                    @click="bookmark"
+                >
+                    Bookmark
+                </v-btn>
+
+                <v-btn
+                    v-if="isUserLoggedIn && isBookmarked"
+                    dark
+                    class="cyan"
+                    @click="unbookmark"
+                >
+                    Unbookmark
+                </v-btn>
             </v-flex>
             
             <v-flex xs6>
@@ -36,19 +54,52 @@
 </template>
 
 <script>
-import SongsService from '@/services/songsService'
+import {mapState} from 'vuex'
+import bookmarksService from '@/services/bookmarksService'
+
 export default {
     props: [
         'song'
     ],
-    methods: {
-        navigateTo(route){
-            this.$router.push(route)
+    data(){
+        return {
+            isBookmarked: false
         }
     },
-    async mounted(){
-        //   request backend data
-        this.songs = (await SongsService.edit()).data
+    computed: {
+        ...mapState([
+            'isUserLoggedIn'
+        ])
+    },
+    async mounted (){
+        const bookmark = (await bookmarksService.index({
+            songId: this.song.id,
+            userId: this.$store.state.user.id   
+        })).data
+        this.isBookmarked = !!bookmark
+        console.log('bookmark', this.isBookmarked)
+    },
+    methods: {
+        async bookmark(){
+            try {
+                await bookmarksService.post({
+                    songId: this.song.id,
+                    userId: this.$store.state.user.id   
+                })
+            } catch (err) {
+                console.log(err)
+            }
+        },
+        async unbookmark(){
+            try {
+                await bookmarksService.delete({
+                    songId: this.song.id,
+                    userId: this.$store.state.user.id   
+                })
+            } catch (err) {
+                console.log(err)
+            }
+        }
     }
 }
 </script>
