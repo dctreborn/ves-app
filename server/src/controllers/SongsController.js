@@ -18,7 +18,7 @@ module.exports = {
                     }
                 })
             } else {
-                const songs = await Song.findAll({
+                songs = await Song.findAll({
                     limit: 10
                 })
             }
