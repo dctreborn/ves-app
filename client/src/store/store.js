@@ -28,7 +28,7 @@ export default new Vuex.Store({
             commit('setToken', token)
         },
         setUser({ commit }, user) {
-            commit('setUser', token)
+            commit('setUser', user)
         }
     }
 })
