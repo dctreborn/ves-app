@@ -17,8 +17,8 @@
         v-model="password"
       ></v-text-field>
       <br>
-      <div class="error" v-html="error"/>
-      <v-btn class="cyan" @click="register">Log In</v-btn>
+      <div class="danger-alert" v-html="error"/>
+      <v-btn class="cyan" @click="login">Log In</v-btn>
   </panel>
 
 </template>
@@ -35,7 +35,7 @@ export default {
       }
   },
   methods: {
-    async register(){
+    async login(){
       try {
         const response = await authenticationService.login({
           email: this.email,
@@ -43,6 +43,9 @@ export default {
         })
         this.$store.dispatch('setToken', response.data.token)
         this.$store.dispatch('setUser', response.data.user)
+        this.$router.push({
+          name: 'songs'
+        })
       } catch (error) {
         this.error = error.response.data.error
       }
@@ -52,7 +55,5 @@ export default {
 </script>
 
 <style scoped>
-  .error {
-    color: red;
-  }
+
 </style>
