@@ -21,9 +21,8 @@ module.exports = {
 
     async post(req, res) {
         try {
-            const bookmark = req.body
-
-            await Bookmark.create(bookmark)
+            const bookmark = req.query
+            const newBookmark = await Bookmark.create(bookmark)
             res.send(bookmark)
         } catch (err) {
             res.status(500).send({
