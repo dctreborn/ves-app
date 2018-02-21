@@ -1,4 +1,4 @@
-const { Bookmark } = require('../models')
+const { Bookmark, Song } = require('../models')
 
 module.exports = {
     async index(req, res) {
@@ -21,9 +21,25 @@ module.exports = {
 
     async post(req, res) {
         try {
-            const bookmark = req.query
-            const newBookmark = await Bookmark.create(bookmark)
-            res.send(bookmark)
+            const {songId, userId} = req.body
+            const bookmark = await Bookmark.findOne({
+                where: {
+                    SongId: songId,
+                    UserId: userId
+                }
+            })
+            console.log('bookmark data', bookmark)
+            if(bookmark) {
+                return res.status(400).send({
+                    error: 'you already have this bookmarked'
+                })
+            }
+
+            const newBookmark = await Bookmark.create({
+                SongId: songId,
+                UserId: userId
+            })
+            res.send(newBookmark)
         } catch (err) {
             res.status(500).send({
                 error: 'An error occured creating bookmark'
