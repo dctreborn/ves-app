@@ -80,7 +80,8 @@ export default {
             
             try {
                 const bookmarks = (await bookmarksService.index({
-                    songId: this.song.id
+                    songId: this.song.id,
+                    userId: this.user.id
                 })).data
                 if(bookmarks.length){
                     this.bookmark = bookmarks[0]
@@ -95,7 +96,8 @@ export default {
         async setAsBookmark(){
             try {
                 this.bookmark = (await bookmarksService.post({
-                    songId: this.song.id
+                    songId: this.song.id,
+                    userId: this.user.id
                 })).data
             } catch (err) {
                 console.log(err)
@@ -103,7 +105,10 @@ export default {
         },
         async unsetAsBookmark(){
             try {
-                await bookmarksService.delete(this.bookmark.id)
+                await bookmarksService.delete({
+                    bookmarkId: this.bookmark.id,
+                    userId: this.user.id
+                })
                 this.bookmark = null
             } catch (err) {
                 console.log(err)
