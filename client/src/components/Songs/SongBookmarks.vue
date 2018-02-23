@@ -30,22 +30,13 @@ export default {
                 {
                     text: 'Artist',
                     value: 'artist'
-                },
+                }
             ],
             pagination: {
                 sortBy: 'createdAt',
                 descending: true
             },
-            bookmarks: [
-                {
-                    title: 'hello world',
-                    artist: 'Testing'
-                },
-                {
-                    title: 'hello world',
-                    artist: 'Testing'
-                }
-            ]
+            bookmarks: []
         }
     },
     computed: {
@@ -56,9 +47,7 @@ export default {
     },
     async mounted(){
         if (this.isUserLoggedIn) {
-            this.bookmarks = (await bookmarksService.index({
-                userId: this.user.id
-            })).data
+            this.bookmarks = (await bookmarksService.index()).data
         }
     }
 }
