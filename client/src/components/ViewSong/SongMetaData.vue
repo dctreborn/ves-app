@@ -94,7 +94,7 @@ export default {
     methods: {
         async setAsBookmark(){
             try {
-                this.bookmark = await (bookmarksService.post({
+                this.bookmark = (await bookmarksService.post({
                     songId: this.song.id
                 })).data
             } catch (err) {
