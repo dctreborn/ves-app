@@ -33,7 +33,7 @@ export default {
                 },
             ],
             pagination: {
-                sortBy: 'data',
+                sortBy: 'createdAt',
                 descending: true
             },
             bookmarks: [
